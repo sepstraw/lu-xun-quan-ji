@@ -2,6 +2,12 @@
 
 本仓库用 Markdown 收录鲁迅作品。文本由 PDF 扫描件经 [MinerU](https://github.com/opendatalab/MinerU) 解析后整理：标题层级归并、分页断行合并、标点与空格补正，页下注释移到所注段落之后。
 
+## 网页版
+
+[`docs/index.html`](docs/index.html) 是《朝花夕拾》的拆书页：结构图、十篇速览、人物关系、主题、写作时间线，用 HTML + Markdown + Mermaid 写成，`docs/vendor/` 里带了 marked 与 mermaid，可离线双击打开。
+
+在仓库 Settings → Pages 里把源设为 `main /docs`，即可访问 <https://sepstraw.github.io/lu-xun-quan-ji/>。
+
 ## 目录
 
 ### 朝花夕拾

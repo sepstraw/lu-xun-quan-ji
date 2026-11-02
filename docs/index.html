@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>朝花夕拾 · 拆书</title>
+<style>
+:root{
+  --paper:#faf7f1; --ink:#23201c; --ink-2:#5b544a; --ink-3:#8a8175;
+  --line:#e4dccd; --card:#fffdf9; --accent:#9c2b1b; --accent-soft:#f4e7e0;
+  --w:780px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:"Songti SC","Noto Serif CJK SC","Source Han Serif SC","SimSun",Georgia,serif;
+  font-size:17px; line-height:1.85; -webkit-font-smoothing:antialiased;
+}
+.ui{font-family:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",system-ui,sans-serif}
+.wrap{max-width:var(--w); margin:0 auto; padding:0 24px}
+
+header.hero{padding:70px 0 38px; border-bottom:1px solid var(--line)}
+.eyebrow{font-size:12px; letter-spacing:.28em; color:var(--accent)}
+h1{font-size:clamp(30px,4.6vw,44px); line-height:1.28; margin:.34em 0 .3em; letter-spacing:.08em}
+.lede{color:var(--ink-2); font-size:17px; max-width:34em; margin:0}
+.stats{display:flex; flex-wrap:wrap; gap:30px; margin:30px 0 2px}
+.stat b{display:block; font-size:25px; line-height:1.15; font-family:"PingFang SC","Microsoft YaHei",sans-serif}
+.stat span{font-size:12px; color:var(--ink-3); letter-spacing:.1em}
+
+nav{position:sticky; top:0; z-index:20; background:rgba(250,247,241,.93); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line)}
+nav .wrap{display:flex; gap:4px; overflow-x:auto}
+nav a{padding:13px 12px; font-size:14px; color:var(--ink-2); text-decoration:none; white-space:nowrap;
+  border-bottom:2px solid transparent}
+nav a:hover,nav a.on{color:var(--accent); border-bottom-color:var(--accent)}
+
+section{padding:52px 0; border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:0}
+.chapno{font-size:12px; letter-spacing:.2em; color:var(--ink-3)}
+h2{font-size:clamp(24px,3.6vw,31px); margin:.2em 0 .1em; letter-spacing:.06em}
+.tagline{font-size:18px; color:var(--ink-2); border-left:3px solid var(--accent); padding-left:15px; margin:16px 0 26px}
+
+.fig{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px 16px 6px; margin:0 0 26px}
+.fig .mermaid{display:flex; justify-content:center; overflow-x:auto}
+.fig figcaption{font-size:12.5px; color:var(--ink-3); text-align:center; padding:6px 0 10px; letter-spacing:.04em}
+.fig pre.err{font-size:12px; color:#8a3b2e; background:#fdf0ec; padding:12px; border-radius:8px; overflow:auto}
+
+.md p{margin:0 0 1.1em; text-align:justify}
+.md ul,.md ol{padding-left:1.35em; margin:0 0 1.2em}
+.md li{margin:.3em 0}
+.md blockquote{margin:1.2em 0; padding:2px 18px; border-left:3px solid var(--line); color:var(--ink-2)}
+.md code{background:#f2ece1; padding:1px 5px; border-radius:4px; font-size:.9em}
+.md a{color:var(--accent)}
+.md table{border-collapse:collapse; width:100%; font-size:15px; margin:0 0 1.2em}
+.md th,.md td{border-bottom:1px solid var(--line); padding:8px 10px; text-align:left}
+.md th{color:var(--ink-3); font-weight:400; font-size:13px; letter-spacing:.08em}
+
+.cards{display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:12px; margin:6px 0 8px}
+.card{display:block; text-decoration:none; color:inherit; background:var(--card);
+  border:1px solid var(--line); border-radius:12px; padding:15px 17px; transition:.18s}
+.card:hover{border-color:var(--accent); transform:translateY(-2px)}
+.card b{display:block; font-size:17px; letter-spacing:.04em; margin-bottom:4px}
+.card span{font-size:13.5px; color:var(--ink-2); line-height:1.65}
+
+.note{background:var(--accent-soft); border-left:3px solid var(--accent); border-radius:0 8px 8px 0;
+  padding:14px 18px; font-size:14.5px; color:#5d2a20; margin:0 0 24px}
+.note b{font-weight:600}
+
+footer{padding:38px 0 64px; font-size:12.5px; color:var(--ink-3); line-height:1.9}
+footer a{color:var(--ink-2)}
+
+@media (max-width:640px){
+  body{font-size:16px}
+  header.hero{padding:44px 0 28px}
+  section{padding:36px 0}
+  .stats{gap:18px}
+}
+@media print{
+  nav{display:none}
+  body{background:#fff; font-size:11pt}
+  section{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow ui">拆书 · 鲁迅</div>
+    <h1>朝花夕拾</h1>
+    <p class="lede">十篇回忆，外加《小引》与《后记》。1926 年从北京写到厦门，1927 年在广州结集。鲁迅说，这些是“从记忆中抄出来的”。</p>
+    <div class="stats ui">
+      <div class="stat"><b>12</b><span>篇（含小引 · 后记）</span></div>
+      <div class="stat"><b>262</b><span>条注释</span></div>
+      <div class="stat"><b>1.8 万</b><span>字原文</span></div>
+      <div class="stat"><b>1926</b><span>写于三地</span></div>
+    </div>
+  </div>
+</header>
+
+<nav class="ui"><div class="wrap">
+  <a href="#overview">结构</a>
+  <a href="#pieces">十篇</a>
+  <a href="#people">人物</a>
+  <a href="#themes">主题</a>
+  <a href="#timeline">时间线</a>
+  <a href="#howto">怎么读</a>
+</div></nav>
+
+<main>
+
+<section id="overview">
+  <div class="wrap">
+    <div class="chapno ui">一 · 全书结构</div>
+    <h2>一个孩子，从园子里走出来</h2>
+    <p class="tagline">十篇不是编年史，是一条从百草园走到广州的路。</p>
+
+    <script type="text/markdown">
+《小引》交代为什么写，《后记》交代插图怎么考据出来。中间十篇按人生顺序排下去：先在百草园长到十来岁，然后家里出事、父亲病死、离家去南京，再渡海到仙台，最后回头写故人。
+    </script>
+
+    <figure class="fig">
+      <div class="mermaid">
+flowchart TD
+  A["小引 · 为什么写"] --> B["童年 · 百草园<br/>狗·猫·鼠 · 阿长与《山海经》<br/>《二十四孝图》· 五猖会<br/>无常 · 从百草园到三味书屋"]
+  B --> C["少年<br/>父亲的病 · 琐记"]
+  C --> D["青年 · 日本<br/>藤野先生"]
+  D --> E["回望<br/>范爱农"]
+  E --> F["后记 · 插图的考据"]
+      </div>
+      <figcaption>十篇的次序：童年六篇 → 少年两篇 → 青年一篇 → 回望一篇</figcaption>
+    </figure>
+
+    <div class="note ui">
+      <b>一句话。</b>这书写的不是“过去发生了什么”，而是“我现在还记得什么”——记忆有偏差，但鲁迅不打算改。
+    </div>
+  </div>
+</section>
+
+<section id="pieces">
+  <div class="wrap">
+    <div class="chapno ui">二 · 十篇速览</div>
+    <h2>每篇一句话</h2>
+    <p class="tagline">先记住这一句，再回原文读细节。</p>
+
+    <div class="cards">
+      <a class="card" href="https://github.com/sepstraw/lu-xun-quan-ji/blob/main/朝花夕拾/朝花夕拾.md#小引" target="_blank" rel="noopener"><b>小引</b><span>把“旧事重提”改名“朝花夕拾”；记忆不可靠，但“我现在只记得是这样”。</span></a>
+      <a class="card" href="https://github.com/sepstraw/lu-xun-quan-ji/blob/main/朝花夕拾/朝花夕拾.md#狗猫鼠" target="_blank" rel="noopener"><b>狗·猫·鼠</b><span>仇猫的三条理由，顺手回敬“名人或名教授”。</span></a>
+      <a class="card" href="https://github.com/sepstraw/lu-xun-quan-ji/blob/main/朝花夕拾/朝花夕拾.md#阿长与山海经" target="_blank" rel="noopener"><b>阿长与《山海经》</b><span>保姆买来绘图的《山海经》；“仁厚黑暗的地母呵”。</span></a>
+      <a class="card" href="https://github.com/sepstraw/lu-xun-quan-ji/blob/main/朝花夕拾/朝花夕拾.md#二十四孝图" target="_blank" rel="noopener"><b>《二十四孝图》</b><span>看孝子图看到“郭巨埋儿”，从此怕父亲也学郭巨。</span></a>
+      <a class="card" href="https://github.com/sepstraw/lu-xun-quan-ji/blob/main/朝花夕拾/朝花夕拾.md#五猖会" target="_blank" rel="noopener"><b>五猖会</b><span>正要去看赛会，父亲叫住背书；背完，热闹也没意思了。</span></a>
+      <a class="card" href="https://github.com/sepstraw/lu-xun-quan-ji/blob/main/朝花夕拾/朝花夕拾.md#无常" target="_blank" rel="noopener"><b>无常</b><span>阴间的无常直爽有人情，比阳间的“正人君子”可亲。</span></a>
+      <a class="card" href="https://github.com/sepstraw/lu-xun-quan-ji/blob/main/朝花夕拾/朝花夕拾.md#从百草园到三味书屋" target="_blank" rel="noopener"><b>从百草园到三味书屋</b><span>菜畦、美女蛇、雪地捕鸟，然后是书塾与“铁如意”。</span></a>
+      <a class="card" href="https://github.com/sepstraw/lu-xun-quan-ji/blob/main/朝花夕拾/朝花夕拾.md#父亲的病" target="_blank" rel="noopener"><b>父亲的病</b><span>两位名医、稀奇药引、“败鼓皮丸”，临终被逼着大声叫父亲。</span></a>
+      <a class="card" href="https://github.com/sepstraw/lu-xun-quan-ji/blob/main/朝花夕拾/朝花夕拾.md#琐记" target="_blank" rel="noopener"><b>琐记</b><span>衍太太的流言，出走南京：中西学堂、矿路学堂、《天演论》。</span></a>
+      <a class="card" href="https://github.com/sepstraw/lu-xun-quan-ji/blob/main/朝花夕拾/朝花夕拾.md#藤野先生" target="_blank" rel="noopener"><b>藤野先生</b><span>讲义上的红笔、“你改悔罢”的匿名信、临别的“惜别”照片。</span></a>
+      <a class="card" href="https://github.com/sepstraw/lu-xun-quan-ji/blob/main/朝花夕拾/朝花夕拾.md#范爱农" target="_blank" rel="noopener"><b>范爱农</b><span>东京同乡会上的争执，辛亥后的短暂得意，最后淹死在菱荡。</span></a>
+      <a class="card" href="https://github.com/sepstraw/lu-xun-quan-ji/blob/main/朝花夕拾/朝花夕拾.md#后记" target="_blank" rel="noopener"><b>后记</b><span>为插图做的考据：麻胡子、老莱子、无常到底是哪一个。</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="people">
+  <div class="wrap">
+    <div class="chapno ui">三 · 人物</div>
+    <h2>六个人，围着“我”</h2>
+    <p class="tagline">有恩的、有怨的，都在记忆里各占一格。</p>
+
+    <figure class="fig">
+      <div class="mermaid">
+flowchart LR
+  ME(["我"])
+  ME --> A["长妈妈<br/>保姆"]
+  ME --> B["父亲"]
+  ME --> C["寿镜吾<br/>三味书屋塾师"]
+  ME --> D["藤野严九郎<br/>仙台教授"]
+  ME --> E["范爱农<br/>同乡 · 朋友"]
+  ME -.-> F["衍太太<br/>叔祖之妻"]
+  B -.-> G["陈莲河<br/>绍兴名医"]
+      </div>
+      <figcaption>实线＝亲近与师承；虚线＝阴影与纠葛</figcaption>
+    </figure>
+
+    <script type="text/markdown">
+- **长妈妈**：睡觉摆“大”字、逼着说“恭喜恭喜”，却买回了《山海经》。全文最后一句是给她的。
+- **父亲**：在《五猖会》里叫住背书，在《父亲的病》里被药引和“败鼓皮丸”耽误；临终被“我”大声喊叫，是作者自认的“最大的错处”。
+- **衍太太**：对孩子“好”，却编出偷东西的流言——离家的直接推力。
+- **藤野先生**：改讲义、问裹脚，最后送一张写“惜别”的照片。
+- **范爱农**：初见时“眼球白多黑少”，后来一起喝酒；革命来了又走，人也没了。
+    </script>
+  </div>
+</section>
+
+<section id="themes">
+  <div class="wrap">
+    <div class="chapno ui">四 · 主题</div>
+    <h2>记忆与考据，两股劲</h2>
+    <p class="tagline">一边是“我记得”，一边是“我查过”。</p>
+
+    <figure class="fig">
+      <div class="mermaid">
+flowchart TD
+  T["朝花夕拾"] --> M["记忆"]
+  T --> K["考据"]
+  M --> M1["温情：长妈妈 · 藤野"]
+  M --> M2["阴影：父亲的病 · 流言"]
+  K --> K1["《二十四孝图》"]
+  K --> K2["后记：无常画像"]
+  M -.->|"记忆靠不住，就用考据补"| K
+      </div>
+      <figcaption>两种写法互相拉扯，构成全书的语气</figcaption>
+    </figure>
+
+    <script type="text/markdown">
+《小引》先声明：这十篇“与实际容或有些不同，然而我现在只记得是这样”。《后记》又反过来，为了几张插图去查《资暇集》、比《玉历钞传》——记忆靠不住，就用考据补。补到最后，作者说“不知海内博雅君子，以为何如”，还是不确定。
+    </script>
+  </div>
+</section>
+
+<section id="timeline">
+  <div class="wrap">
+    <div class="chapno ui">五 · 时间线</div>
+    <h2>一年写完，两年发完</h2>
+    <p class="tagline">篇末日期是理解这组文章的坐标。</p>
+
+    <script type="text/markdown">
+| 时间 | 篇目 | 备注 |
+| --- | --- | --- |
+| 1926 年 2 月 | 狗·猫·鼠 | 开笔 |
+| 1926 年 3 月 | 阿长与《山海经》 | |
+| 1926 年 5 月 | 《二十四孝图》 · 五猖会 | |
+| 1926 年 6 月 | 无常 | |
+| 1926 年 9 月 | 从百草园到三味书屋 | |
+| 1926 年 10 月 | 父亲的病 · 琐记 · 藤野先生 | 一个月里写了三篇 |
+| 1926 年 11 月 | 范爱农 | 十篇写完 |
+| 1927 年 5 月 | 小引 | 于广州白云楼 |
+| 1927 年 7 月 | 后记 | 写完于广州东堤寓楼 |
+
+日期取自各篇篇末自注；十篇陆续刊于《莽原》半月刊，从 1926 年 3 月排到 12 月。
+    </script>
+  </div>
+</section>
+
+<section id="howto">
+  <div class="wrap">
+    <div class="chapno ui">六 · 怎么读</div>
+    <h2>三条路</h2>
+
+    <script type="text/markdown">
+| 想做的事 | 怎么走 |
+| --- | --- |
+| 通读一遍 | 打开 [朝花夕拾.md](https://github.com/sepstraw/lu-xun-quan-ji/blob/main/朝花夕拾/朝花夕拾.md)，注释以 `> **注 N**` 排在每段之后，不用来回翻页 |
+| 先抓结构 | 看完本页三张图，再按“童年 → 少年 → 青年 → 回望”的顺序读 |
+| 查某条注 | 注释按篇内顺序编号，正文里没有上标，靠段落位置定位 |
+
+全书 12 篇、262 条注释、约 1.8 万字。插图 5 张，都在 `朝花夕拾/images/` 下。
+    </script>
+  </div>
+</section>
+
+</main>
+
+<footer class="wrap ui">
+  文本：<a href="https://github.com/sepstraw/lu-xun-quan-ji">sepstraw/lu-xun-quan-ji</a> · 《朝花夕拾》人民文学出版社版，PDF 经 MinerU 解析后整理。<br>
+  本页：HTML 结构 + Markdown 正文 + Mermaid 图表，marked 与 mermaid 随仓库提供，可离线双击打开。
+</footer>
+
+<script src="vendor/marked.min.js"></script>
+<script src="vendor/mermaid.min.js"></script>
+<script>
+(function () {
+  marked.setOptions({ gfm: true, breaks: false });
+
+  document.querySelectorAll('script[type="text/markdown"]').forEach(function (el) {
+    var box = document.createElement('div');
+    box.className = 'md';
+    box.innerHTML = marked.parse(el.textContent);
+    el.parentElement.replaceChild(box, el);
+  });
+
+  if (window.mermaid) {
+    mermaid.initialize({
+      startOnLoad: false,
+      securityLevel: 'loose',
+      theme: 'base',
+      fontFamily: '"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif',
+      themeVariables: {
+        background: '#fffdf9', primaryColor: '#f7efe4', primaryTextColor: '#23201c',
+        primaryBorderColor: '#c9b9a2', lineColor: '#a89a86', secondaryColor: '#f2ece1',
+        tertiaryColor: '#faf7f1', fontSize: '15px'
+      },
+      flowchart: { curve: 'basis', nodeSpacing: 34, rankSpacing: 40, htmlLabels: true, padding: 10, useMaxWidth: false }
+    });
+    document.querySelectorAll('.mermaid').forEach(function (el, i) {
+      var src = el.textContent.trim();
+      el.removeAttribute('data-processed');
+      mermaid.render('mmd-' + i, src).then(function (res) {
+        el.innerHTML = res.svg;
+      }).catch(function (err) {
+        el.innerHTML = '<pre class="err">图表未渲染：' + (err && err.message ? err.message : err) +
+          '\n\n' + src.replace(/</g, '&lt;') + '</pre>';
+      });
+    });
+  }
+
+  var links = Array.prototype.slice.call(document.querySelectorAll('nav a'));
+  var targets = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var idx = targets.indexOf(e.target);
+        if (idx < 0) return;
+        links.forEach(function (a) { a.classList.remove('on'); });
+        links[idx].classList.add('on');
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    targets.forEach(function (t) { if (t) io.observe(t); });
+  }
+})();
+</script>
+</body>
+</html>
