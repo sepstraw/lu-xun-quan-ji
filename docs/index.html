@@ -66,6 +66,8 @@ h2{font-size:clamp(24px,3.6vw,31px); margin:.2em 0 .1em; letter-spacing:.06em}
 .note{background:var(--accent-soft); border-left:3px solid var(--accent); border-radius:0 8px 8px 0;
   padding:14px 18px; font-size:14.5px; color:#5d2a20; margin:0 0 24px}
 .note b{font-weight:600}
+.warn{max-width:var(--w); margin:22px auto; padding:13px 18px; background:#fdf0ec; border:1px solid #e7c6bd;
+  border-radius:8px; color:#8a3b2e; font-size:14px; line-height:1.7}
 
 footer{padding:38px 0 64px; font-size:12.5px; color:var(--ink-3); line-height:1.9}
 footer a{color:var(--ink-2)}
@@ -109,6 +111,10 @@ footer a{color:var(--ink-2)}
 </div></nav>
 
 <main>
+
+<div class="warn" id="libwarn" hidden>
+  本页的正文与图表依赖 cdn.jsdelivr.net 上的 marked 与 mermaid，当前没能加载成功。请检查网络后刷新。
+</div>
 
 <section id="overview">
   <div class="wrap">
@@ -263,13 +269,18 @@ flowchart TD
 
 <footer class="wrap ui">
   文本：<a href="https://github.com/sepstraw/lu-xun-quan-ji">sepstraw/lu-xun-quan-ji</a> · 《朝花夕拾》人民文学出版社版，PDF 经 MinerU 解析后整理。<br>
-  本页：HTML 结构 + Markdown 正文 + Mermaid 图表，marked 与 mermaid 随仓库提供，可离线双击打开。
+  本页：HTML 结构 + Markdown 正文 + Mermaid 图表；marked 与 mermaid 由 cdn.jsdelivr.net 提供，需联网。
 </footer>
 
-<script src="vendor/marked.min.js"></script>
-<script src="vendor/mermaid.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
 <script>
 (function () {
+  if (!window.marked || !window.mermaid) {
+    var w = document.getElementById('libwarn');
+    if (w) w.hidden = false;
+    return;
+  }
   marked.setOptions({ gfm: true, breaks: false });
 
   document.querySelectorAll('script[type="text/markdown"]').forEach(function (el) {

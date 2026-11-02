@@ -4,7 +4,7 @@
 
 ## 网页版
 
-[`docs/index.html`](docs/index.html) 是《朝花夕拾》的拆书页：结构图、十篇速览、人物关系、主题、写作时间线，用 HTML + Markdown + Mermaid 写成，`docs/vendor/` 里带了 marked 与 mermaid，可离线双击打开。
+[`docs/index.html`](docs/index.html) 是《朝花夕拾》的拆书页：结构图、十篇速览、人物关系、主题、写作时间线，用 HTML + Markdown + Mermaid 写成。marked 与 mermaid 走 `cdn.jsdelivr.net`，打开需要联网。
 
 在仓库 Settings → Pages 里把源设为 `main /docs`，即可访问 <https://sepstraw.github.io/lu-xun-quan-ji/>。
 
